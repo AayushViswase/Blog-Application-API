@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import com.blog.Playload.Request.CategoryRequest;
 import com.blog.Playload.Response.CategoryResponse;
 import com.blog.Service.CategoryService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 
 @RestController
 @RequestMapping("/category")
@@ -28,6 +29,7 @@ public class CategoryController {
 
 	@PostMapping("/create")
 	public ResponseEntity<CategoryResponse> createCategory(@RequestBody CategoryRequest categoryRequest) {
+		System.out.print(categoryRequest);
 		CategoryResponse response = categoryService.createCategory(categoryRequest);
 		return new ResponseEntity<CategoryResponse>(response, HttpStatus.OK);
 	}
